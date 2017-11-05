@@ -1,0 +1,1 @@
+while (true) {bufferedReader.mark(temp);temp = bufferedReader.read();if (temp != ' ' && temp != '\t' && temp != -1) {break; }public class a1 {public static void main(String[] args){System.out.println("Hello, World");}}
