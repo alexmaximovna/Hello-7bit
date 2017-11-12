@@ -13,6 +13,7 @@ import java.io.File;
 public class ReaderFile implements IReader, IClosable {
 
     private BufferedReader fileInput;
+    private char symbol;
 
     /**
      * Function read text from file
