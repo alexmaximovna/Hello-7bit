@@ -36,11 +36,14 @@ public class ReaderFile implements IReader, IClosable {
      * @return True or False
      * @throws Exception Exception of Writer or Reader
      */
-    public boolean hasChar() throws Exception {
-        if (fileInput.read() != -1) {
-            return (true);
+   public boolean hasChar() throws Exception {
+        int c = fileInput.read();
+        if (c == -1) {
+            return false;
+        } else {
+            symbol = (char) c;
+            return true;
         }
-        return false;
     }
 
     /**
@@ -50,8 +53,8 @@ public class ReaderFile implements IReader, IClosable {
      */
     public char readChar() throws Exception {
         try {
-            return (char) fileInput.read();
-        } catch (IOException e) {
+            return symbol;
+        } catch (Exception e) {
             throw new Exception("File not found", e);
         }
     }
