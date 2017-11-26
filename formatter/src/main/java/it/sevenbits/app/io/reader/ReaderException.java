@@ -1,4 +1,4 @@
-package it.sevenbits.app.IO.reader;
+package it.sevenbits.app.io.reader;
 
 /**
  * class reader exception

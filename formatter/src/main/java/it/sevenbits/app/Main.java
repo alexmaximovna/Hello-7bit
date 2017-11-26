@@ -1,7 +1,7 @@
 package it.sevenbits.app;
 
-import it.sevenbits.app.IO.reader.Implemetation.ReaderFile;
-import it.sevenbits.app.IO.writer.Implementation.WriterFile;
+import it.sevenbits.app.io.reader.implemetation.ReaderFile;
+import it.sevenbits.app.io.writer.implementation.WriterFile;
 import it.sevenbits.app.formatter.IFormatter;
 import it.sevenbits.app.formatter.implementation.FormatCode;
 import it.sevenbits.app.lexer.ILexer;
@@ -28,7 +28,7 @@ public class Main {
             formatter.format(lexer, out);
 
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new Exception("Program execution error",e);
         }
 
 

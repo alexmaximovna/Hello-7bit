@@ -1,4 +1,4 @@
-package it.sevenbits.app.IO.writer;
+package it.sevenbits.app.io.writer;
 
 /**
  *class of writer exception

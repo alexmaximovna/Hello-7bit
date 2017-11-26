@@ -1,10 +1,10 @@
-package it.sevenbits.app.IO.reader.Implemetation;
+package it.sevenbits.app.io.reader.implemetation;
 
-import it.sevenbits.app.IO.closable.IClosable;
-import it.sevenbits.app.IO.reader.IReader;
+import it.sevenbits.app.io.closable.IClosable;
+import it.sevenbits.app.io.reader.IReader;
 import java.io.IOException;
-import it.sevenbits.app.IO.closable.ClosableException;
-import it.sevenbits.app.IO.reader.ReaderException;
+import it.sevenbits.app.io.closable.ClosableException;
+import it.sevenbits.app.io.reader.ReaderException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -28,7 +28,7 @@ public class ReaderFile implements IReader, IClosable {
             reader = Files.newBufferedReader(Paths.get(namefile), StandardCharsets.UTF_8);
             readChar = reader.read();
         } catch (IOException e) {
-            throw new ReaderException("Unsupported encoding", e);
+            throw new ReaderException("Error of reading file", e);
         }
     }
 
@@ -48,11 +48,11 @@ public class ReaderFile implements IReader, IClosable {
      * @throws ReaderException Exception of Writer or Reader
      */
     public char nextChar() throws ReaderException {
-        int prevChar =readChar ;
+        int prevChar = readChar ;
         try {
-           readChar=reader.read();
+           readChar = reader.read();
         } catch (IOException e) {
-            throw new ReaderException("File not found", e);
+            throw new ReaderException("Attempting to read outside of the input stream", e);
         }
         return (char) prevChar;
 

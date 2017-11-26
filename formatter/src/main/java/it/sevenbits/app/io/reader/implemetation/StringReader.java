@@ -1,7 +1,7 @@
-package it.sevenbits.app.IO.reader.Implemetation;
+package it.sevenbits.app.io.reader.implemetation;
 
-import it.sevenbits.app.IO.reader.IReader;
-import it.sevenbits.app.IO.reader.ReaderException;
+import it.sevenbits.app.io.reader.IReader;
+import it.sevenbits.app.io.reader.ReaderException;
 
 /**
  * Класс для чтения файла посимвольно

@@ -1,4 +1,4 @@
-package it.sevenbits.app.IO.closable;
+package it.sevenbits.app.io.closable;
 
 
 /**

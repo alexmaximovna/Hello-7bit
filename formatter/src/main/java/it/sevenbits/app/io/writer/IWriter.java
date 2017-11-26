@@ -1,5 +1,5 @@
-package it.sevenbits.app.IO.writer;
-import it.sevenbits.app.IO.writer.WriterException;
+package it.sevenbits.app.io.writer;
+
 /**
  * Interface for class Writer
  */

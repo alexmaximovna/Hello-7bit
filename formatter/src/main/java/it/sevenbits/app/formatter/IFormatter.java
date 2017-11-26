@@ -1,7 +1,6 @@
 package it.sevenbits.app.formatter;
 
-import it.sevenbits.app.IO.reader.IReader;
-import it.sevenbits.app.IO.writer.IWriter;
+import it.sevenbits.app.io.writer.IWriter;
 import it.sevenbits.app.lexer.ILexer;
 
 /**

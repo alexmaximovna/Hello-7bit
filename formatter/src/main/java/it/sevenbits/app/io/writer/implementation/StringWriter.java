@@ -1,7 +1,7 @@
-package it.sevenbits.app.IO.writer.Implementation;
+package it.sevenbits.app.io.writer.implementation;
 
-import it.sevenbits.app.IO.writer.IWriter;
-import it.sevenbits.app.IO.writer.WriterException;
+import it.sevenbits.app.io.writer.IWriter;
+import it.sevenbits.app.io.writer.WriterException;
 /**
  * Class for writing rich text to a file using a string
  */
@@ -25,7 +25,7 @@ public class StringWriter implements IWriter {
         public void writeChar(final char symb)throws WriterException {
             try {
                 builder.append(symb);
-            }catch (Exception e) {
+            } catch (Exception e) {
                 throw new WriterException("Writing error", e);
             }
 

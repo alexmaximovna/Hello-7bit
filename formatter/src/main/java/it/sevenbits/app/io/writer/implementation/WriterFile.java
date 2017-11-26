@@ -1,10 +1,13 @@
-package it.sevenbits.app.IO.writer.Implementation;
+package it.sevenbits.app.io.writer.implementation;
+
+
+import it.sevenbits.app.io.closable.IClosable;
+import it.sevenbits.app.io.writer.IWriter;
+import it.sevenbits.app.io.closable.ClosableException;
+import it.sevenbits.app.io.writer.WriterException;
 
 import java.io.*;
-import it.sevenbits.app.IO.closable.IClosable;
-import it.sevenbits.app.IO.writer.IWriter;
-import it.sevenbits.app.IO.closable.ClosableException;
-import it.sevenbits.app.IO.writer.WriterException;
+
 
 /**
  * Write substring in outputString
@@ -15,7 +18,7 @@ public class WriterFile implements IWriter, IClosable {
     /**
      * Constructor write in file
      * @param name Name of file
-     * @throws WriterException Exception IO
+     * @throws WriterException Exception io
      */
     public WriterFile(final String name) throws WriterException {
         try {
@@ -31,7 +34,7 @@ public class WriterFile implements IWriter, IClosable {
     /**
      Function write in file
      * @param symb Symbol from text
-     * @throws WriterException Exception IO
+     * @throws WriterException Exception io
      *
      *  */
     public void writeChar(final char symb) throws WriterException {

@@ -1,4 +1,4 @@
-package it.sevenbits.app.IO.reader;
+package it.sevenbits.app.io.reader;
 
 
 /**
@@ -8,7 +8,7 @@ public interface IReader {
     /**
      * Function of checking
      * @return True or False
-     * @throws ReaderException Exception of Writer or Reader
+     * @throws ReaderException Exception of Reader
      */
     boolean hasChar() throws ReaderException;
 
