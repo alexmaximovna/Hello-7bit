@@ -3,48 +3,56 @@ package it.sevenbits.app.stateMachineLexer;
 /**
  * Class of TokenBuilder
  */
-public class TokenBuilder {
+public class TokenBuilder  {
 
-    private StringBuilder builder;
+    private StringBuilder lexeme;
     private String string;
+    private boolean done;
 
     /**
      *Constructor of TokenBuilder
      * @param lexeme lexeme.
      */
     TokenBuilder(final StringBuilder lexeme) {
-        this.builder = lexeme;
+        this.lexeme = lexeme;
+        done = false;
     }
 
     /**
      *Add symbol
      * @param c char.
      */
-    public final void append(final Character c) {
-        builder.append(c);
+    void append(final Character c) {
+        lexeme.append(c);
     }
-
+    public boolean getDone() {
+        return done;
+    }
     /**
      *In toString
      * @return string.
      */
     public final String toString() {
-        return builder.toString();
+        return lexeme.toString();
     }
-
+    void setDone(final boolean done) {
+        this.done = done;
+    }
     /**
      * returnToken.
      */
     public final void returnToken() {
-        string = builder.toString();
-        builder = new StringBuilder("");
+        string = lexeme.toString();
+        lexeme = new StringBuilder("");
     }
 
-    /**
-     *
-     * @return string.
-     */
+
     public final String getString() {
         return string;
+    }
+
+
+    void setLexeme(StringBuilder lexeme) {
+        this.lexeme = lexeme;
     }
 }
