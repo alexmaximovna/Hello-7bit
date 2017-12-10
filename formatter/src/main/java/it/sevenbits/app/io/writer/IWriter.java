@@ -10,4 +10,5 @@ public interface IWriter {
         * @throws WriterException Exception Writer
         */
        void writeChar(char symb) throws WriterException;
+       void writeString(String s);
 }

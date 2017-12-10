@@ -1,4 +1,4 @@
-package it.sevenbits.app.stateMachineFormatter;
+package it.sevenbits.app.lexer.implementation;
 
 /**
  * class State
@@ -12,7 +12,7 @@ public class State {
          * @param c string.
          *
          */
-        State(final String c) {
+        public State(final String c) {
             this.string = c;
         }
         /**

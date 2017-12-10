@@ -1,11 +1,12 @@
 package it.sevenbits.app.formatter.implementation;
+import it.sevenbits.app.formatter.*;
 import it.sevenbits.app.io.reader.ReaderException;
-import it.sevenbits.app.formatter.IFormatter;
 import it.sevenbits.app.io.writer.IWriter;
-import it.sevenbits.app.formatter.FormatterException;
 import it.sevenbits.app.io.writer.WriterException;
 import it.sevenbits.app.lexer.LexerException;
 import it.sevenbits.app.lexer.ILexer;
+
+
 import it.sevenbits.app.token.IToken;
 
 
@@ -13,11 +14,29 @@ import it.sevenbits.app.token.IToken;
  * Class of formatting the text
  */
 public class FormatCode implements IFormatter {
-    private int lvl = 0;
+    private ICommandRepository commands = new CommandRepository();
+    private IStateTransitions  transitions = new StateTransitions();
+
+    public FormatCode() throws WriterException {
+    }
+
+    public void format(ILexer lexer, IWriter writer ) throws LexerException,ReaderException,WriterException{
+        IContext context = new Context(writer);
+        State state = new State("default");
+        while (lexer.hasMoreTokens() && state != null){
+            IToken token = lexer.readToken();
+            ICommand command = commands.getCommand(state,token);
+            command.execute(token,context);
+            state = transitions.getNextState(state,token);
+        }
+    }
+
+
+    /*private int lvl = 0;
     private boolean flag = false ;
     private int openBracket = 0 ;
     private int closeBracket = 0 ;
-    public  void format(final ILexer lexer, final IWriter writer) throws FormatterException {
+    public  void format(final ILexer lexer, final IWriter writer) throws FormatterException,LexerException,ReaderException {
         try {
             while (lexer.hasMoreTokens()) {
                 IToken token = lexer.readToken();
@@ -111,7 +130,7 @@ public class FormatCode implements IFormatter {
         } catch (Exception e) {
             throw new FormatterException("spacing failed ", e);
         }
-    }
+    }*/
 
 
 }

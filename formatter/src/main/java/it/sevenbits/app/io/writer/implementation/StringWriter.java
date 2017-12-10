@@ -16,6 +16,11 @@ public class StringWriter implements IWriter {
 
             return builder.toString();
         }
+    public void writeString(String s){
+            builder.append(s);
+    }
+
+
 
     /**
      * The function writes a character to a string of type StringBuilder
