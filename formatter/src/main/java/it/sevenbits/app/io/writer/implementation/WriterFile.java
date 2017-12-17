@@ -44,7 +44,12 @@ public class WriterFile implements IWriter, IClosable {
             throw new WriterException("Writing error", e);
         }
     }
- public void writeString(String s){
+
+    /**
+     * writeString
+     * @param s string
+     */
+ public void writeString(final String s){
 
  }
     /**

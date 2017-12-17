@@ -4,16 +4,23 @@ import it.sevenbits.app.formatter.IContext;
 import it.sevenbits.app.io.writer.IWriter;
 import it.sevenbits.app.io.writer.WriterException;
 
+/**
+ * ContextFormatter
+ */
 class Context implements IContext {
-
+    private static final int FOUR = 4;
     private final IWriter writer;
 
-    public Context(IWriter writer){
+    /**
+     * Context
+     * @param writer writer
+     */
+    public Context(final IWriter writer) {
         this.writer = writer;
 
     }
     @Override
-    public void writeLexeme(String lexeme) {
+    public void writeLexeme(final String lexeme) {
         writer.writeString(lexeme);
     }
 
@@ -23,10 +30,10 @@ class Context implements IContext {
     }
 
     @Override
-    public void writeSpace(int level) throws WriterException {
-        int indent = 4;
+    public void writeSpace(final int level) throws WriterException {
+
         for (int i = 0; i < level; i++) {
-            for (int j = 0; j < indent; j++) {
+            for (int j = 0; j < FOUR; j++) {
                 writer.writeChar(' ');
             }
         }

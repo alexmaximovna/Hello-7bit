@@ -1,4 +1,4 @@
-package it.sevenbits.app.formatter;
+package it.sevenbits.app.formatter.testLexer;
 
 import it.sevenbits.app.io.reader.IReader;
 import it.sevenbits.app.io.reader.ReaderException;
@@ -10,6 +10,7 @@ import it.sevenbits.app.lexer.ICommandRepository;
 import it.sevenbits.app.lexer.IStateTransitions;
 import it.sevenbits.app.lexer.implementation.Lexer;
 import it.sevenbits.app.token.IToken;
+import it.sevenbits.app.token.implementation.Token;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -57,24 +58,6 @@ public class LexerTest {
 
 
     }
-    @Ignore
-    @Test
-    public void testStateMachine() throws LexerException, ReaderException {
-        IReader reader = mock(IReader.class);
-        when(reader.hasChar()).thenReturn(true,false);
-        ICommand command = mock(ICommand.class);
-        ICommandRepository commands = mock(ICommandRepository.class);
-        // when(commands.getCommand( any(State.class),anyChar()).thenReturn(command));
-        IStateTransitions transitions = mock(IStateTransitions.class);
 
-
-       ILexer lexer = new Lexer(reader);
-       //lexer.hasMoreTokens();
-        lexer.readToken();
-
-        verify(reader).nextChar();
-       verify(reader).hasChar();
-
-    }
 
 }

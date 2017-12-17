@@ -14,8 +14,6 @@ import it.sevenbits.app.token.implementation.Token;
 public class Lexer implements ILexer, IContext {
 
     private IReader input;
-    private char prev;
-    private boolean space = false, lineComment = false, str = false, multiLineComment = false;
     private String tokenName;
     private StringBuilder tokenLexeme;
     private ICommandRepository commands;
@@ -28,10 +26,17 @@ public class Lexer implements ILexer, IContext {
      * @param input Value of IReader
      */
     public Lexer(final IReader input) {
-        this(input, new CommandRepository(),new StateTransitions());
+        this(input, new CommandRepository(), new StateTransitions());
 
     }
-    Lexer (IReader reader,ICommandRepository commands,IStateTransitions transitions ){
+
+    /**
+     * Lexer
+     * @param reader reader
+     * @param commands commands
+     * @param  transitions transitions
+     */
+    public Lexer(final IReader reader, final ICommandRepository commands, final IStateTransitions transitions) {
         this.input = reader;
         this.commands = commands;
         this.transitions = transitions;
@@ -43,53 +48,61 @@ public class Lexer implements ILexer, IContext {
      */
     public boolean hasMoreTokens() throws LexerException {
         try {
-            return postponeBuffer.length()>0|| input.hasChar();
+            return postponeBuffer.length() > 0 || input.hasChar();
         } catch (Exception e) {
             throw new LexerException("Error of lexer", e);
         }
+
 
     }
 
     /**
      * @return Token
-     * @throws LexerException Exception Reader
+     * @throws LexerException Exception Lexer
      */
-    public IToken readToken() throws LexerException,ReaderException {
+    public IToken readToken() throws LexerException {
         tokenLexeme = new StringBuilder();
         State state = new State("default");
         IReader postponeReader = new StringReader(postponeBuffer.toString());
-        while (postponeReader.hasChar() && state!=null){
-            char c = postponeReader.nextChar();
-            ICommand command = commands.getCommand(state,c);
-            command.execute(c,this);
-            state = transitions.getNextState(state,c);
+        try {
+            while (postponeReader.hasChar() && state != null) {
+
+                char c = postponeReader.nextChar();
+                ICommand command = commands.getCommand(state, c);
+                command.execute(c, this);
+                state = transitions.getNextState(state, c);
+
+            }
+            postponeBuffer = new StringBuilder();
+
+
+            while (input.hasChar() && state != null) {
+
+                char c = input.nextChar();
+                ICommand command = commands.getCommand(state, c);
+                command.execute(c, this);
+                state = transitions.getNextState(state, c);
+            }
+
+            return new Token(tokenName, tokenLexeme.toString());
+
+        } catch (ReaderException e) {
+            throw new LexerException("reader error", e);
         }
-        postponeBuffer = new StringBuilder();
-
-
-        while (input.hasChar() && state!=null){
-            char c = input.nextChar();
-            ICommand command = commands.getCommand(state,c);
-            command.execute(c,this);
-            state = transitions.getNextState(state,c);
-        }
-
-        return new Token(tokenName,tokenLexeme.toString());
-
     }
 
     @Override
-    public void appendLexeme(char c) {
+    public void appendLexeme(final char c) {
             tokenLexeme.append(c);
     }
 
     @Override
-    public void setTokenName(String name) {
+    public void setTokenName(final String name) {
             tokenName = name;
     }
 
     @Override
-    public void appendPostpone(char c) {
+    public void appendPostpone(final char c) {
         postponeBuffer.append(c);
 
     }

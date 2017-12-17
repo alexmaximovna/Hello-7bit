@@ -28,7 +28,7 @@ public class Main {
             formatter.format(lexer, out);
 
         } catch (Exception e) {
-            throw new Exception("Program execution error",e);
+            throw new Exception("Program execution error" , e);
         }
 
 

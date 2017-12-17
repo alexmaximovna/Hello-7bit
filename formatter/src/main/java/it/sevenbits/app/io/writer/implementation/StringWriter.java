@@ -16,7 +16,12 @@ public class StringWriter implements IWriter {
 
             return builder.toString();
         }
-    public void writeString(String s){
+
+    /**
+     * writeString
+     * @param s string
+     */
+    public void writeString(final String s) {
             builder.append(s);
     }
 

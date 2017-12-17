@@ -3,6 +3,7 @@ package it.sevenbits.app.io.reader.implemetation;
 import it.sevenbits.app.io.reader.IReader;
 import it.sevenbits.app.io.reader.ReaderException;
 
+
 /**
  * Класс для чтения файла посимвольно
  */

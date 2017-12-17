@@ -1,4 +1,4 @@
-package it.sevenbits.app.formatter;
+package it.sevenbits.app.formatter.testIO;
 
 import it.sevenbits.app.io.reader.IReader;
 import it.sevenbits.app.io.reader.ReaderException;

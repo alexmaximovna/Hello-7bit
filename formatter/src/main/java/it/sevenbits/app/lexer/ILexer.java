@@ -22,7 +22,7 @@ public interface ILexer {
      * @return new Token
      * @throws LexerException Exception Lexer
      */
-    IToken readToken() throws LexerException, ReaderException;
+    IToken readToken() throws LexerException;
 
 
 }
