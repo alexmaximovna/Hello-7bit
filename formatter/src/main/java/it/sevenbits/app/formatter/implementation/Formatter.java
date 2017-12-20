@@ -122,10 +122,4 @@ public class Formatter {
                 output.writeChar('\t');
             }
         } catch (Exception e) {
-            throw new FormatterException("spacing failed ", e);
-        }
-
-
-    }
-
-}
+            throw new FormatterException

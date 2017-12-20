@@ -41,15 +41,4 @@ public class FormatCode implements IFormatter {
                state = transitions.getNextState(state, token);
            }
        } catch (LexerException | WriterException lexExp) {
-           throw new FormatterException("Exception of Formatter", lexExp);
-       }
-
-    }
-
-
-
-}
-
-
-
-
+           throw new FormatterException("Exceptio
